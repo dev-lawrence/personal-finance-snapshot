@@ -4,8 +4,8 @@ A minimal, polished finance tracker to visualize monthly income and expenses,
 with per-category budgets and local persistence. Built for the Frontend
 Developer Evaluation Assessment.
 
-Live Demo: <your-vercel-link>
-Repository: <repo-link>
+Live Demo: https://personal-finance-snapshot.netlify.app/
+Repository: https://github.com/dev-lawrence/personal-finance-snapshot
 
 ## Stack
 
@@ -42,6 +42,21 @@ Repository: <repo-link>
 
 ## Architecture
 
+src/
+app/ # Shell / navigation
+components/
+budgets/ # Budget UI
+charts/ # Recharts wrappers
+dashboard/ # Dashboard widgets
+transactions/ # List, row, filters, dialog
+ui/ # shadcn components (generated)
+data/ # Static category metadata
+store/ # Zustand store (with persist)
+hooks/ # FinanceContext
+utils/ # Formatters
+App.tsx
+main.tsx
+
 State management:
 
 - `store/finance.ts` holds transactions, budgets, selectors, and persistence.
@@ -58,5 +73,5 @@ Data model:
 ```bash
 npm install
 npm run dev
-# open http://localhost:5173
+# open http://localhost:3000
 ```

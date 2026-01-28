@@ -40,33 +40,32 @@ Repository: https://github.com/dev-lawrence/personal-finance-snapshot
 - Transactions: list with filters, add/delete
 - Budgets: set/edit category limits, see progress
 
-## Architecture
+## What I’d Improve With More Time
 
-src/
-app/ # Shell / navigation
-components/
-budgets/ # Budget UI
-charts/ # Recharts wrappers
-dashboard/ # Dashboard widgets
-transactions/ # List, row, filters, dialog
-ui/ # shadcn components (generated)
-data/ # Static category metadata
-store/ # Zustand store (with persist)
-hooks/ # FinanceContext
-utils/ # Formatters
-App.tsx
-main.tsx
+- Add multi-month navigation (view spending trends over time)
+- Transaction editing and inline updates
+- CSV import/export for transactions
+- Currency selection and formatting preferences
+- Dark mode + theme toggle
+- Unit tests for selectors and components
 
-State management:
+## Challenges Faced
 
-- `store/finance.ts` holds transactions, budgets, selectors, and persistence.
-- Derived selectors: monthly totals, category breakdowns, budget health.
+- Designing an interface that feels _simple yet insightful_ without visual clutter.
+- Balancing analytical data (charts) and personal clarity (text summaries).
+- Building a maintainable data layer without over-engineering (no backend).
+- Handling responsive table layout gracefully across screen sizes.
 
-Data model:
+## Time Spent
 
-- Transaction: `{ id, date, description, amount, category, type }`
-- Budget: `{ category, limit }`
-- Categories: Food, Rent, Transport, Entertainment, Other (+ Income type)
+| Task                                             | Hours                           |
+| ------------------------------------------------ | ------------------------------- |
+| Project setup + architecture                     | 1h                              |
+| Core features (Transactions, Dashboard, Budgets) | 5h                              |
+| Styling + Responsive tweaks                      | 5h                              |
+| UX polishing and animations                      | 30mins                          |
+| Testing + deployment + README                    | 1h                              |
+| **Total**                                        | **≈14h (spread across 2 days)** |
 
 ## Getting Started
 

@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+# Personal Finance Snapshot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal, polished finance tracker to visualize monthly income and expenses,
+with per-category budgets and local persistence. Built for the Frontend
+Developer Evaluation Assessment.
 
-Currently, two official plugins are available:
+Live Demo: <your-vercel-link>
+Repository: <repo-link>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## React Compiler
+- React + Vite (TypeScript)
+- Tailwind CSS + shadcn/ui
+- Zustand (state) + localStorage (persistence)
+- Recharts (charts)
+- Zod (validation)
+- date-fns (dates)
+- Lucide (icons)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Why This Approach
 
-## Expanding the ESLint configuration
+- Simplicity first: local-only app with fast interactions.
+- Clear information hierarchy: snapshot → composition → details.
+- Subtle design: borders, spacing, color accents; avoids unnecessary gradients/shadows.
+- Mobile-friendly: single-column flow; tables horizontally scroll on small screens.
+- Maintainable code: modular components, typed models, simple store.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Add transactions (date, type, category, amount, description)
+- Monthly summary (income, expenses, net)
+- Spending by category (pie) + budget health (progress bars)
+- Set budgets per category; see over/under at a glance
+- Filter transactions by category
+- Data persists in localStorage
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Screens
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Dashboard: insights, category chart, budget health
+- Transactions: list with filters, add/delete
+- Budgets: set/edit category limits, see progress
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Architecture
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+State management:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- `store/finance.ts` holds transactions, budgets, selectors, and persistence.
+- Derived selectors: monthly totals, category breakdowns, budget health.
+
+Data model:
+
+- Transaction: `{ id, date, description, amount, category, type }`
+- Budget: `{ category, limit }`
+- Categories: Food, Rent, Transport, Entertainment, Other (+ Income type)
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+# open http://localhost:5173
 ```
